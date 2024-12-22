@@ -1,0 +1,16 @@
+services:
+  newsletter-api:
+    image: ${DOCKER_REGISTRY-}newsletterapi
+    container_name: newsletter_api
+    build:
+      context: .
+      dockerfile: Newsletter.API/Dockerfile
+
+  newsletter-db:
+    image: postgres:latest
+    container_name: newsletter_database
+
+  newsletter-mq:
+    image: rabbitmq:3-management
+    container_name: newsletter_mq
+    hostname: newsletter-mq
